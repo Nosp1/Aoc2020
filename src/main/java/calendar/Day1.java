@@ -17,9 +17,37 @@ public class Day1 {
     public static void main(String[] args) throws IOException, URISyntaxException {
 
         //day1Task1Solve1();
-        day1Task1Solve2();
-        day1Task2Solve1();
+       // day1Task1Solve2();
+       // day1Task2Solve1();
+       // day1Task1BestSolve();
+        day1Task2BestSolve();
+    }
 
+    private static void day1Task2BestSolve() throws IOException {
+        List<Integer> integers = FileInputReader.getConnection("https://adventofcode.com/2020/day/1/input")
+            .stream()
+            .map(
+                Integer::parseInt)
+            .collect(Collectors.toList());
+        integers.forEach(i -> integers.forEach(x -> integers.stream()
+            .filter(y -> i + x + y == 2020)
+            .distinct()
+            .mapToInt(w -> i * x * w)
+            .forEach(System.out::println)));
+    }
+
+    private static void day1Task1BestSolve() throws IOException {
+        List<Integer> integers = FileInputReader.getConnection("https://adventofcode.com/2020/day/1/input")
+            .stream()
+            .map(
+                Integer::parseInt)
+            .collect(Collectors.toList());
+        integers.forEach(i ->
+            integers.stream()
+                .filter(x -> i + x == 2020)
+                .mapToInt(x -> i * x)
+                .forEach(System.out::println)
+        );
     }
 
     private static void day1Task2Solve1() throws IOException {
